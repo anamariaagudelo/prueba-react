@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Header = ()=>{
+const Header = (props)=>{
     return(
         <header>
-
+            <h1 className="text-center">{props.cookies}</h1>
         </header>
     )
 }

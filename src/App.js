@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import Router from './components/Router';
-import Header from './components/util/Header'
+import RegistertCandidate from './screens/RegisterCandidate'
 
 
 
 class App extends Component {
   render() {
     return (
-      <div className="contenedor">
-          <Header></Header>
-          <Router></Router>
+      <div className="container">
+        <Router></Router>
+        <div >
+          <RegistertCandidate />
+        </div>
       </div>
+
     )
   }
 }
