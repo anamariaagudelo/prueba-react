@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Router from './components/Router';
-import RegistertCandidate from './screens/RegisterCandidate'
+import Router from '../../screens/Router'
 
 
 
@@ -9,9 +8,6 @@ class App extends Component {
     return (
       <div className="container">
         <Router></Router>
-        <div >
-          <RegistertCandidate />
-        </div>
       </div>
 
     )
