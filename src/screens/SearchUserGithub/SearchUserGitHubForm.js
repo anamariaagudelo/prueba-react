@@ -13,12 +13,12 @@ class SearchUserGithub extends Component {
             user: this.userRef.current.value
 
         }
-       
+
         // enviar por props 
         this.props.consultUser(search)
 
         // resetear formulario
-
+        e.currentTarget.reset();
     }
 
     render() {
