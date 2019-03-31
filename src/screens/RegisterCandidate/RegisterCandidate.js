@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegisterCandidateForm from './RegisterCandidateForm';
-import PrintCandidate from './PrintCandidate'
+import PrintCandidate from './PrintCandidate';
+
 
 
 
@@ -8,6 +9,23 @@ class RegisterCandidate extends Component {
     state = {
         candidates: []
     }
+
+    componentDidMount() {
+        const candidatesCookies = localStorage.getItem('candidates');
+        if (candidatesCookies) {
+            this.setState({
+                candidates: JSON.parse(candidatesCookies)
+            })
+        }
+    }
+
+    componentDidUpdate() {
+        localStorage.setItem(
+            'candidates',
+            JSON.stringify(this.state.candidates)
+        )
+    }
+    
 
     createCandidate = (NewCandidate) => {
         //console.log(candidate);
