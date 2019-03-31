@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchUserGitHubForm from '../SearchUserGithub/SearchUserGitHubForm';
 import ErrorSearchUser from '../../screens/Error/ErrorSearchUser'
+import TableRepos from '../SearchUserGithub/TableRepos'
 
 
 class SearchUserGithub extends Component {
@@ -11,8 +12,11 @@ class SearchUserGithub extends Component {
         result: {}
     }
 
-    componentDidUpdate() {
-        this.consultApi();
+    componentDidUpdate(prevProps, preState) {
+        if(preState.consult !== this.state.consult){
+            this.consultApi();
+        }
+        
     }
 
     componentDidMount() {
@@ -54,18 +58,23 @@ class SearchUserGithub extends Component {
             })
         } else {
             this.setState({
-                consult: search
+                consult: search,
+                error: false
             })
         }
     }
 
-    render() {
+      render() {
         const ErrorExist = this.state.error;
 
-        let resultError;
+        let finalResult;
 
         if (ErrorExist) {
-            resultError = <ErrorSearchUser />
+            finalResult = <ErrorSearchUser />
+        }else{
+            finalResult= <TableRepos 
+            result={this.state.result}/>
+
         }
 
         return (
@@ -73,8 +82,7 @@ class SearchUserGithub extends Component {
                 <SearchUserGitHubForm
                     consultUser={this.consultUser}
                 />
-                {resultError}
-                <p>Tabla</p>
+                {finalResult}
             </div>
         )
     }
