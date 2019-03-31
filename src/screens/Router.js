@@ -3,7 +3,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from '../screens/Home/Home'
 import SearchUserGithub from '../screens/SearchUserGithub/SearchUserGithub'
 import Error from '../screens/Error/Error'
-import Header from '../components/UI/Header/Header'
 import NavigationBar from '../components/UI/navigation/NavigationBar'
 import RegisterCandidate from '../screens/RegisterCandidate/RegisterCandidate';
 
@@ -11,7 +10,6 @@ class Router extends Component{
     render(){
         return(
             <BrowserRouter>
-            <Header/>
             <NavigationBar></NavigationBar>
                 <Switch>
                    <Route exact path="/" component={Home}/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../../components/UI/Header/Header'
 import RegisterCandidateForm from './RegisterCandidateForm';
+import PrintCandidate from './PrintCandidate'
 
 
 
@@ -11,7 +11,7 @@ class RegisterCandidate extends Component {
 
     createCandidate = (NewCandidate) => {
         //console.log(candidate);
-        const candidates = [...this.state.candidates,NewCandidate]; // Una copia del state actual y le paso el nuevo candidato
+        const candidates = [...this.state.candidates, NewCandidate]; // Una copia del state actual y le paso el nuevo candidato
         console.log(candidates);
 
         this.setState({
@@ -23,7 +23,11 @@ class RegisterCandidate extends Component {
     render() {
         return (
             <div>
-                <Header cookies={"Aun no hay candidatos registrados"} />
+                <div>
+                    <PrintCandidate
+                        candidates={this.state.candidates} />
+                </div>
+
                 <div>
                     <RegisterCandidateForm
                         createCandidate={this.createCandidate} />

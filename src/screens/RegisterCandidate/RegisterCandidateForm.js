@@ -12,8 +12,9 @@ class RegisterCandidateForm extends Component {
     emailRef = React.createRef();
     userGitRef = React.createRef();
 
-    state = {}
-
+    state = {
+        error: false
+    }
 
 
 
@@ -23,26 +24,43 @@ class RegisterCandidateForm extends Component {
         const name = this.nameRef.current.value,
             lastName = this.lastNameRef.current.value,
             id = this.idRef.current.value,
+            birtDate = this.birtDateRef.current.value,
             email = this.emailRef.current.value,
             userGit = this.userGitRef.current.value
 
-        const newCandidate = {
-            ide:uuid(),
-            name,
-            lastName,
-            id,
-            email,
-            userGit
+        if (name === '' || lastName === '' || id === ''||birtDate==='' || email === '' || userGit === '') {
+            this.setState({
+                error: true
+            })
+        } else {
+            const newCandidate = {
+                ide: uuid(),
+                name,
+                lastName,
+                id,
+                birtDate,
+                email,
+                userGit
+            }
+
+            //Se envia el objeto hacia el padre para actualizar el state
+            this.props.createCandidate(newCandidate);
+
+            //Reiniciar el formulario
+            e.currentTarget.reset();
+
+            //Elimminar el Error
+            this.setState({
+                error:false
+            })
         }
-
-        //Se envia el objeto hacia el padre para actualizar el state
-        this.props.createCandidate(newCandidate);
-
-        //Reiniciar el formulario
-        e.currentTarget.reset();
     }
 
+
+
     render() {
+        const ErrorExist = this.state.error;
+
         return (
             <div className="car-mt-5">
                 <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
@@ -91,6 +109,7 @@ class RegisterCandidateForm extends Component {
                         </div>
                     </div>
                 </form>
+                {ErrorExist ? <div className="alert alert-danger text-center">All fields are required</div> : ''}
             </div>
 
         )
