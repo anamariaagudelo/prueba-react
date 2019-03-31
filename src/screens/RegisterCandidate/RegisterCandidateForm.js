@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 
 
+
 class RegisterCandidateForm extends Component {
 
     //refs
@@ -62,7 +63,7 @@ class RegisterCandidateForm extends Component {
         const ErrorExist = this.state.error;
 
         return (
-            <div className="car-mt-5">
+            <div className="card-mt-5">
                 <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
                 <form onSubmit={this.createCandidate}>
                     <div className="form-group row">
