@@ -12,13 +12,13 @@ class RowsRepos extends Component {
                     <th scope="row"></th>
                     <th scope="col">{name}</th>
                     <th scope="col">{description}</th>
-                    <th scope="col"><a href="{{html_url}}">{git_url}</a></th>
+                    <th scope="col">{git_url}</th>
                     <th scope="col">{default_branch}</th>
                     <th scope="col">{language}</th>
                 </tr>
             </tbody>
-
         );
+        
     }
 }
 

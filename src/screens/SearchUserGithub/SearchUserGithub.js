@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SearchUserGitHubForm from '../SearchUserGithub/SearchUserGitHubForm';
 import ErrorSearchUser from '../../screens/Error/ErrorSearchUser';
-import TableRepos from './TableRepos'
+import TableRepos from './TableRepos';
+
 
 
 class SearchUserGithub extends Component {
@@ -74,7 +75,6 @@ class SearchUserGithub extends Component {
         }else{
             finalResult= <TableRepos
             result={this.state.result}/>
-
         }
 
         return (

@@ -87,7 +87,7 @@ class RegisterCandidateForm extends Component {
 
                     <div className="form-group row">
                         <label className="col-sm-4 col-lg-2 col-form-label">Birt Date</label>
-                        <div className="col-sm-8 col-lg-4  mb-4 mb-lg-0">
+                        <div className="col-sm-8 col-lg-10">
                             <input ref={this.birtDateRef} type="date" className="form-control" />
                         </div>
                     </div>
