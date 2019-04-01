@@ -4,21 +4,19 @@ import PaginationTable from '../../components/UI/Pagination/PaginationTable';
 
 
 
-
-
 class TableRepos extends Component {
 
 
     render() {
         const repos = this.props.result;
 
-        const message = Object.keys(repos).length === 0 ? 'Repositories No found' : 'Filtrado'
+        const message = Object.keys(repos).length === 0 ? 'No Repositories' : ''
 
-        const pagination = Object.keys(repos).length === 0 ? '' : <div><PaginationTable/></div>
+        const pagination = Object.keys(repos).length === 0 ? '' : <div><PaginationTable /></div>
         return (
             <div className="container">
                 <h2>{message}</h2>
-                <div  className="card-mt-5">
+                <div className="card-mt-5">
                     <table className="table">
                         <thead>
                             <tr>
@@ -36,9 +34,10 @@ class TableRepos extends Component {
                                 info={this.props.result[repo]} />
                         ))}
                     </table>
-                   <h2>{pagination}</h2>
-                </div>
+                   
+                <h2>{pagination}</h2>
             </div>
+            </div >
         );
     }
 }

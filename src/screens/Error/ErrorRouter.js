@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import ErrorComponent from '../../components/UI/Error/Error'
 
 class Error extends Component {
     render() {
         return (
             <div >
-                <h1>OPSSSS!!!!</h1>
-                <h2>RUTA NO ENCONTRADA</h2>
+                <ErrorComponent
+                title='Opsssss Pagina no encontrada'
+                />
             </div>
         )
     }

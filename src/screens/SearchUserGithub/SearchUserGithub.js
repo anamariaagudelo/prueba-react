@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchUserGitHubForm from '../SearchUserGithub/SearchUserGitHubForm';
-import ErrorSearchUser from '../../screens/Error/ErrorSearchUser';
+import Error from '../../components/UI/Error/Error'
 import TableRepos from './TableRepos';
 
 
@@ -9,25 +9,24 @@ class SearchUserGithub extends Component {
 
     state = {
         error: '',
-        consult: {},
         result: {}
     }
-
+/*
     componentDidUpdate(prevProps, preState) {
         if(preState.consult !== this.state.consult){
             this.consultApi();
         }
         
     }
+    */
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.setState({
             error: false
         })
-    }
+    }*/
 
-    consultApi = () => {
-        const { user } = this.state.consult;
+    consultApi = (user) => {
         if (!user) return null
 
         //leer la url
@@ -46,10 +45,10 @@ class SearchUserGithub extends Component {
             })
             .catch(error => {
                 console.log(error)
+                this.setState({
+                    error: 'No se encontró en Repo'
+                })
             })
-
-
-
     }
 
     consultUser = search => {
@@ -59,9 +58,9 @@ class SearchUserGithub extends Component {
             })
         } else {
             this.setState({
-                consult: search,
                 error: false
             })
+            this.consultApi(search.user)
         }
     }
 
@@ -71,7 +70,8 @@ class SearchUserGithub extends Component {
         let finalResult;
 
         if (ErrorExist) {
-            finalResult = <ErrorSearchUser />
+            finalResult = <Error 
+            title='User Github Required'/>
         }else{
             finalResult= <TableRepos
             result={this.state.result}/>
