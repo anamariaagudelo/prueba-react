@@ -4,6 +4,7 @@ import uuid from 'uuid';
 
 
 
+
 class RegisterCandidateForm extends Component {
 
     //refs
@@ -62,8 +63,7 @@ class RegisterCandidateForm extends Component {
 
     render() {
         const ErrorExist = this.state.error;
-
-        return (
+         return (
             <div className="card-mt-5">
                 <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
                 <form onSubmit={this.createCandidate}>
@@ -118,4 +118,7 @@ class RegisterCandidateForm extends Component {
     }
 }
 
+
+
 export default RegisterCandidateForm;
+

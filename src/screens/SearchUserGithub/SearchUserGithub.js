@@ -15,7 +15,6 @@ class SearchUserGithub extends Component {
             repos: [],
             candidate: CookiesCandidate.getCookie('myCookie')
         }
-        console.log(CookiesCandidate.getCookie('myCookie'))
     }
 
    

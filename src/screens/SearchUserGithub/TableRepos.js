@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import RowsRepos from './RowsRepos'
 import * as R from 'ramda';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import BootstrapTable from 'react-bootstrap-table-next';
+/*import paginationFactory from 'react-bootstrap-table2-paginator';
+import BootstrapTable from 'react-bootstrap-table-next';*/
 
 
 

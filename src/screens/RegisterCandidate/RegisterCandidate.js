@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegisterCandidateForm from './RegisterCandidateForm';
 import CookiesCandidate from '../Cookies/Cookies';
+import { withRouter } from "react-router";
 
 
 
@@ -16,7 +17,11 @@ class RegisterCandidate extends Component {
             candidates
         });
         CookiesCandidate.setCookie(NewCandidate);
+
+        const {history} = this.props;
+        history.push('/search');
    }
+   
 
     render() {
         return (
@@ -31,5 +36,6 @@ class RegisterCandidate extends Component {
         )
     }
 }
+const RegisterCandidateWithRouter = withRouter(RegisterCandidate);
 
-export default RegisterCandidate;
+export default RegisterCandidateWithRouter;
