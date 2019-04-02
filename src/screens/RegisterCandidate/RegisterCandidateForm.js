@@ -22,7 +22,7 @@ class RegisterCandidateForm extends Component {
     createCandidate = e => {
         e.preventDefault();
         console.log({e});
-        debugger
+        
         const name = this.nameRef.current.value,
             lastName = this.lastNameRef.current.value,
             id = this.idRef.current.value,

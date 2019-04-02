@@ -2,29 +2,23 @@ import React, { Component } from 'react';
 import SearchUserGitHubForm from '../SearchUserGithub/SearchUserGitHubForm';
 import Error from '../../components/UI/Error/Error'
 import TableRepos from './TableRepos';
+import CookiesCandidate from '../Cookies/Cookies';
 
 
 
 class SearchUserGithub extends Component {
-
-    state = {
-        error: '',
-        result: {}
-    }
-/*
-    componentDidUpdate(prevProps, preState) {
-        if(preState.consult !== this.state.consult){
-            this.consultApi();
-        }
+    constructor(props){
+        super(props);
         
+        this.state = {
+            error: '',
+            repos: [],
+            candidate: CookiesCandidate.getCookie('myCookie')
+        }
+        console.log(CookiesCandidate.getCookie('myCookie'))
     }
-    */
 
-    /*componentDidMount() {
-        this.setState({
-            error: false
-        })
-    }*/
+   
 
     consultApi = (user) => {
         if (!user) return null
@@ -40,7 +34,7 @@ class SearchUserGithub extends Component {
             })
             .then(data => {
                 this.setState({
-                    result: data
+                    repos: data
                 })
             })
             .catch(error => {
@@ -64,21 +58,25 @@ class SearchUserGithub extends Component {
         }
     }
 
-      render() {
+    render() {
         const ErrorExist = this.state.error;
 
         let finalResult;
 
         if (ErrorExist) {
-            finalResult = <Error 
-            title='User Github Required'/>
-        }else{
-            finalResult= <TableRepos
-            result={this.state.result}/>
+            finalResult = <Error
+                title='User Github Required' />
+        } else {
+            finalResult = <TableRepos
+                repos={this.state.repos}
+            />
         }
 
         return (
             <div >
+                <div>
+                    {JSON.stringify(this.state.candidate)}
+                </div>
                 <SearchUserGitHubForm
                     consultUser={this.consultUser}
                 />

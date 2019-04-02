@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RowsRepos from './RowsRepos'
-import PaginationTable from '../../components/UI/Pagination/PaginationTable';
+import * as R from 'ramda';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import BootstrapTable from 'react-bootstrap-table-next';
 
 
 
@@ -8,16 +10,50 @@ class TableRepos extends Component {
 
 
     render() {
-        const repos = this.props.result;
 
-        const message = Object.keys(repos).length === 0 ? 'No Repositories' : ''
+        // const options = {
+        //     sizePerPage: 5,
+        //     hideSizePerPage: true,
+        //     hidePageListOnlyOnePage: true
+        // };
 
-        const pagination = Object.keys(repos).length === 0 ? '' : <div><PaginationTable /></div>
+        // const columns = [{
+        //     dataField: 'name',
+        //     text: 'NAME'
+        //   }, {
+        //     dataField: 'description',
+        //     text: 'DESCRIPTION'
+        //   }, {
+        //     dataField: 'git_url',
+        //     text: 'URL_GIT',
+        //   },
+        //     {
+        //         dataField: 'default_branch',
+        //         text: 'URL_GIT',
+        //     },{
+        //         dataField: 'language',
+        //         text: 'LANGUAGE',         
+        //   }];
+
+        const repos = R.pathOr([], ['repos'])(this.props)
+
+        const message = repos.length ? '' : 'No Repositories'
+
         return (
             <div className="container">
                 <h2>{message}</h2>
                 <div className="card-mt-5">
-                    <table className="table">
+                        {/* <BootstrapTable
+                            keyField="id"
+                            data={repos.map(repo => (
+                                <RowsRepos
+                                    key={repo.id}
+                                    info={repo} />
+                            ))}
+                            columns={columns}
+                            pagination={paginationFactory(options)}
+                        /> */
+                         <table className="table">
                         <thead>
                             <tr>
                                 <th scope="col">NAME</th>
@@ -28,18 +64,16 @@ class TableRepos extends Component {
                                 <th scope="col">LANGUAGE</th>
                             </tr>
                         </thead>
-                        {Object.keys(this.props.result).map(repo => (
+                        {repos.map(repo => (
                             <RowsRepos
-                                key={repo}
-                                info={this.props.result[repo]} />
+                                key={repo.id}
+                                info={repo} />
                         ))}
-                    </table>
-                   
-                <h2>{pagination}</h2>
-            </div>
-            </div >
-        );
-    }
-}
-
+                    </table>}
+                </div>
+                </div >
+                );
+            }
+        }
+        
 export default TableRepos;
