@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import RegisterCandidateForm from './RegisterCandidateForm';
-import CookiesCandidate from '../Cookies/Cookies';
+import CookiesCandidate from '../../components/Cookies/Cookies';
 import { withRouter } from "react-router";
-
-
 
 
 class RegisterCandidate extends Component {
@@ -18,21 +16,19 @@ class RegisterCandidate extends Component {
         });
         CookiesCandidate.setCookie(NewCandidate);
 
-        const {history} = this.props;
+        const { history } = this.props;
         history.push('/search');
-   }
-   
+    }
+
 
     render() {
         return (
             <div>
                 <div>
                     <RegisterCandidateForm
-                        createCandidate={this.createCandidate}/>
+                        createCandidate={this.createCandidate} />
                 </div>
             </div>
-
-
         )
     }
 }

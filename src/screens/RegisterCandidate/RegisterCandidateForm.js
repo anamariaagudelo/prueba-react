@@ -22,7 +22,6 @@ class RegisterCandidateForm extends Component {
 
     createCandidate = e => {
         e.preventDefault();
-        console.log({e});
         
         const name = this.nameRef.current.value,
             lastName = this.lastNameRef.current.value,
@@ -58,8 +57,6 @@ class RegisterCandidateForm extends Component {
             })
         }
     }
-
-
 
     render() {
         const ErrorExist = this.state.error;

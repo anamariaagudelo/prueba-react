@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import SearchUserGitHubForm from '../SearchUserGithub/SearchUserGitHubForm';
+import SearchUserGitHubForm from '../RepositoriesCandidate/SearchUserGitHubForm';
 import Error from '../../components/UI/Error/Error'
 import TableRepos from './TableRepos';
-import CookiesCandidate from '../Cookies/Cookies';
-
+import CookiesCandidate from '../../components/Cookies/Cookies';
 
 
 class SearchUserGithub extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        
+
         this.state = {
             error: '',
             repos: [],
@@ -17,13 +16,10 @@ class SearchUserGithub extends Component {
         }
     }
 
-   
-
     consultApi = (user) => {
         if (!user) return null
 
         //leer la url
-
         let url = `https://api.github.com/users/${user}/repos`
 
         //consultar con fetch
@@ -39,13 +35,13 @@ class SearchUserGithub extends Component {
             .catch(error => {
                 console.log(error)
                 this.setState({
-                    error: 'No se encontró en Repo'
+                    error: 'No se encontró el Repo'
                 })
             })
     }
 
     consultUser = search => {
-        if (search.user === '') {
+        if (search.user == null) {
             this.setState({
                 error: true
             })
@@ -64,7 +60,7 @@ class SearchUserGithub extends Component {
 
         if (ErrorExist) {
             finalResult = <Error
-                title='User Github Required' />
+                title='User Not Found' />
         } else {
             finalResult = <TableRepos
                 repos={this.state.repos}
@@ -76,9 +72,9 @@ class SearchUserGithub extends Component {
                 <div>
                     {JSON.stringify(this.state.candidate)}
                 </div>
-                <SearchUserGitHubForm
+                    <SearchUserGitHubForm
                     consultUser={this.consultUser}
-                />
+                    />
                 {finalResult}
             </div>
         )

@@ -8,8 +8,7 @@ const NavigationBar= () =>{
     return(
         <nav className="navigation">
             <Link to={'/'}>HOME</Link>
-            <Link to={'/register'}>REGISTER</Link>
-            <Link to={'/search'}>SEARCH</Link>            
+            <Link to={'/register'}>REGISTER</Link>           
         </nav>
     );
 }

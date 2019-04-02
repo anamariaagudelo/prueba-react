@@ -7,7 +7,7 @@ class CookiesCandidate {
         return result;
     }
 
-    static setCookie( value) {
+    static setCookie(value) {
         const cookie = ['myCookie', '=', JSON.stringify(value), '; path=/;'].join('');
          document.cookie = cookie;
     }
