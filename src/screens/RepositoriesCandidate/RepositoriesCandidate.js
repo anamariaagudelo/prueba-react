@@ -11,10 +11,12 @@ class SearchUserGithub extends Component {
         this.state = {
             error: '',
             repos: [],
-            candidate: CookiesCandidate.getCookie('myCookie')
+            candidate: CookiesCandidate.getCookie('myCookie'),
+            user: '',
         }
-        const user=(this.state.candidate)
+        const user = this.state.candidate
         this.consultApi(user['userGit'])
+        
     }
 
 
@@ -40,6 +42,7 @@ class SearchUserGithub extends Component {
                     error: 'No se encontró el Repo'
                 })
             })
+            console.log('este es el usuario de las cookies:',user);
     }
 
     render() {
