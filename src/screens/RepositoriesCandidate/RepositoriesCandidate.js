@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SearchUserGitHubForm from '../RepositoriesCandidate/SearchUserGitHubForm';
 import Error from '../../components/UI/Error/Error'
 import TableRepos from './TableRepos';
 import CookiesCandidate from '../../components/Cookies/Cookies';
@@ -14,7 +13,12 @@ class SearchUserGithub extends Component {
             repos: [],
             candidate: CookiesCandidate.getCookie('myCookie')
         }
+        const user=(this.state.candidate)
+        this.consultApi(user['userGit'])
     }
+
+    
+
 
     consultApi = (user) => {
         if (!user) return null
@@ -40,19 +44,6 @@ class SearchUserGithub extends Component {
             })
     }
 
-    consultUser = search => {
-        if (search.user == null) {
-            this.setState({
-                error: true
-            })
-        } else {
-            this.setState({
-                error: false
-            })
-            this.consultApi(search.user)
-        }
-    }
-
     render() {
         const ErrorExist = this.state.error;
 
@@ -72,9 +63,6 @@ class SearchUserGithub extends Component {
                 <div>
                     {JSON.stringify(this.state.candidate)}
                 </div>
-                    <SearchUserGitHubForm
-                    consultUser={this.consultUser}
-                    />
                 {finalResult}
             </div>
         )
