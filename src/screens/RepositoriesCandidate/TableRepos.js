@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import * as R from 'ramda';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import '../../screens/RepositoriesCandidate/TableRepos.css';
+
 
 
 
@@ -18,20 +21,26 @@ class TableRepos extends Component {
 
         const columns = [{
             dataField: 'name',
-            text: 'NAME'
+            text: 'NAME',
+            filter: textFilter(),
+            sort: true
         }, {
             dataField: 'description',
-            text: 'DESCRIPTION'
+            text: 'DESCRIPTION',
+            sort: true
         }, {
             dataField: 'git_url',
             text: 'URL_GIT',
+            sort: true
         },
         {
             dataField: 'default_branch',
             text: 'DEFAULT_BRANCH',
+            sort: true
         }, {
             dataField: 'language',
             text: 'LANGUAGE',
+            sort: true
         }];
 
         const repos = R.pathOr([], ['repos'])(this.props)
@@ -47,6 +56,8 @@ class TableRepos extends Component {
                         keyField="id"
                         columns={columns}
                         pagination={paginationFactory(options)}
+                        filter={ filterFactory() }
+                          defaultSortDirection="asc"
                     />
                 </div>
             </div >
