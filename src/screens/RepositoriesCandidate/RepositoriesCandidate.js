@@ -17,8 +17,6 @@ class SearchUserGithub extends Component {
         this.consultApi(user['userGit'])
     }
 
-    
-
 
     consultApi = (user) => {
         if (!user) return null
