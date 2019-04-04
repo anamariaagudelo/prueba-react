@@ -17,7 +17,6 @@ class SearchUserGithub extends Component {
         }
         const user = this.state.candidate
         this.consultApi(user['userGit'])
-
     }
 
 

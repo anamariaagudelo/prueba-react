@@ -75,7 +75,9 @@
  .containerJumbotron{
     margin-top: 10px;
  }
-
+ .customClass {
+  padding: 3px;
+}
 
  [tabindex="-1"]:focus {
    outline: 0 !important;
