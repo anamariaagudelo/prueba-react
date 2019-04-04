@@ -61,15 +61,13 @@ class RegisterCandidateForm extends Component {
     render() {
         const ErrorExist = this.state.error;
         return (
-            <div className="container-fluid">
-                <div className="jumbotron containerJumbotron">
-                    <h1 className="display-4 text-center">CUSTOM GITHUB APP</h1>
-                    <hr></hr>
+            <div>
+                <div className="jumbotron text-center" >
+                    <h1 className="display-4">CUSTOM GITHUB APP</h1>
                     <h3>aplicación Web que personaliza el uso de Github.</h3>
                     <p>A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
-                </div>
-
-                <div className="card border-primary text-white bg-dark mb-3" >
+                    <hr></hr>
+                    <div className="card border-primary text-white bg-dark mb-3" >
                     <div className="card-body">
                         <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
                         <form onSubmit={this.createCandidate}>
@@ -120,6 +118,9 @@ class RegisterCandidateForm extends Component {
                         {ErrorExist ? <ErrorComponent title='All fields are required' /> : null}
                     </div>
                 </div>
+                </div>
+
+                
             </div>
         )
     }

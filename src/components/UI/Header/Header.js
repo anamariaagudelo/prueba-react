@@ -3,9 +3,14 @@ import React from 'react';
 
 const Header = (props)=>{
     return(
-        <header>
-            
-        </header>
+        <div className="jumbotron">
+            <li>{props.nombre}</li>
+            <li>{props.lastName}</li>    
+            <li>{props.id}</li>  
+            <li>{props.date}</li>  
+            <li>{props.email}</li>  
+            <li>{props.userGit}</li>  
+        </div>
     )
 }
 

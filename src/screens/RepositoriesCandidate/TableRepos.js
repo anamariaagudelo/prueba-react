@@ -56,8 +56,8 @@ class TableRepos extends Component {
                         keyField="id"
                         columns={columns}
                         pagination={paginationFactory(options)}
-                        filter={ filterFactory() }
-                          defaultSortDirection="asc"
+                        filter={filterFactory()}
+                        defaultSortDirection="asc"
                     />
                 </div>
             </div >
