@@ -10,6 +10,7 @@ const Header = (props)=>{
             <li>{props.date}</li>  
             <li>{props.email}</li>  
             <li>{props.userGit}</li>  
+            <hr></hr>
         </div>
     )
 }

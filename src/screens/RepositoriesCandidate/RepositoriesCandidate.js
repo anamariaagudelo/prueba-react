@@ -17,7 +17,7 @@ class SearchUserGithub extends Component {
         }
         const user = this.state.candidate
         this.consultApi(user['userGit'])
-        
+
     }
 
 
@@ -43,7 +43,7 @@ class SearchUserGithub extends Component {
                     error: 'No se encontró el Repo'
                 })
             })
-            console.log('este es el usuario de las cookies:',user);
+        console.log('este es el usuario de las cookies:', user);
     }
 
     render() {
@@ -62,7 +62,6 @@ class SearchUserGithub extends Component {
 
         return (
             <div >
-                <div>
                     <Header
                         nombre={this.state.candidate['name']}
                         lastName={this.state.candidate['lastName']}
@@ -71,8 +70,7 @@ class SearchUserGithub extends Component {
                         email={this.state.candidate['email']}
                         userGit={this.state.candidate['userGit']}
                     />
-                </div>
-                {finalResult}
+                    {finalResult}
             </div>
         )
     }
