@@ -62,36 +62,36 @@ class RegisterCandidateForm extends Component {
         const ErrorExist = this.state.error;
         return (
             <div>
-                <div className="jumbotron text-center" >
-                    <h1 className="display-4">CUSTOM GITHUB APP</h1>
-                    <h3>aplicación Web que personaliza el uso de Github.</h3>
-                    <p>A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
+                <div className="jumbotron " >
+                    <h1 className="display-4 text-center">CUSTOM GITHUB APP</h1>
+                    <h3 className="text-center">aplicación Web que personaliza el uso de Github.</h3>
+                    <p className="text-center">A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
                     <hr></hr>
                     <div className="card border-primary text-white bg-dark mb-3" >
                         <div className="card-body">
-                            <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
+                            <h2 className="card-title text-center mb-5 text-center">REGISTRAR CANDIDATO</h2>
                             <form onSubmit={this.createCandidate}>
                                 <div className="form-group row">
-                                    <label className="col-sm-4 col-lg-2 col-form-label">Name</label>
+                                    <label className="col-sm-4 col-lg-2 col-form-label">Nombre</label>
                                     <div className="col-sm-8 col-lg-10">
-                                        <input id="name" name="name" ref={this.nameRef} type="text" className="form-control" placeholder="Name" />
+                                        <input id="name" name="name" ref={this.nameRef} type="text" className="form-control" placeholder="Nombre" />
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label className="col-sm-4 col-lg-2 col-form-label">Last Name</label>
+                                    <label className="col-sm-4 col-lg-2 col-form-label">Apellido</label>
                                     <div className="col-sm-8 col-lg-10">
-                                        <input id="Lastname" name="Lastname" ref={this.lastNameRef} type="text" className="form-control" placeholder="Last Name" />
+                                        <input id="Lastname" name="Lastname" ref={this.lastNameRef} type="text" className="form-control" placeholder="Apellido" />
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label className="col-sm-4 col-lg-2 col-form-label">Identification</label>
+                                    <label className="col-sm-4 col-lg-2 col-form-label">Identificación</label>
                                     <div className="col-sm-8 col-lg-10">
                                         <input id="id" name="id" ref={this.idRef} type="text" className="form-control" placeholder="Id" />
                                     </div>
                                 </div>
 
                                 <div className="form-group row">
-                                    <label className="col-sm-4 col-lg-2 col-form-label">Birt Date</label>
+                                    <label className="col-sm-4 col-lg-2 col-form-label">Fecha Nacimiento</label>
                                     <div className="col-sm-8 col-lg-10">
                                         <input id="date" name="date" ref={this.birtDateRef} type="date" className="form-control" />
                                     </div>
@@ -103,9 +103,9 @@ class RegisterCandidateForm extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label className="col-sm-4 col-lg-2 col-form-label">User Github</label>
+                                    <label className="col-sm-4 col-lg-2 col-form-label">Usuario Github</label>
                                     <div className="col-sm-8 col-lg-10">
-                                        <input id="userGit" name="UserGit" ref={this.userGitRef} type="text" className="form-control" placeholder="UserGit" />
+                                        <input id="userGit" name="UserGit" ref={this.userGitRef} type="text" className="form-control" placeholder="Usuario Git" />
                                     </div>
                                 </div>
 

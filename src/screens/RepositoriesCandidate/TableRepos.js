@@ -20,12 +20,12 @@ class TableRepos extends Component {
 
         const columns = [{
             dataField: 'name',
-            text: 'NAME',
+            text: 'NOMBRE',
             filter: textFilter(),
             sort: true
         }, {
             dataField: 'description',
-            text: 'DESCRIPTION',
+            text: 'DESCRIPCIÓN',
             sort: true
         }, {
             dataField: 'git_url',
@@ -38,7 +38,7 @@ class TableRepos extends Component {
             sort: true
         }, {
             dataField: 'language',
-            text: 'LANGUAGE',
+            text: 'LANGUJE',
             sort: true
         }];
 

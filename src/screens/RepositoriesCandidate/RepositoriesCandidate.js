@@ -61,7 +61,7 @@ class SearchUserGithub extends Component {
         }
 
         return (
-            <div >
+            <div className="container-fluid">
                     <Header
                         nombre={this.state.candidate['name']}
                         lastName={this.state.candidate['lastName']}
