@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ErrorComponent  from '../../components/UI/Error/Error'
+import ErrorComponent from '../../components/UI/Error/Error'
 import uuid from 'uuid';
 
 
@@ -22,7 +22,7 @@ class RegisterCandidateForm extends Component {
 
     createCandidate = e => {
         e.preventDefault();
-        
+
         const name = this.nameRef.current.value,
             lastName = this.lastNameRef.current.value,
             id = this.idRef.current.value,
@@ -30,7 +30,7 @@ class RegisterCandidateForm extends Component {
             email = this.emailRef.current.value,
             userGit = this.userGitRef.current.value
 
-        if (name === '' || lastName === '' || id === ''||birtDate==='' || email === '' || userGit === '') {
+        if (name === '' || lastName === '' || id === '' || birtDate === '' || email === '' || userGit === '') {
             this.setState({
                 error: true
             })
@@ -53,64 +53,74 @@ class RegisterCandidateForm extends Component {
 
             //Elimminar el Error
             this.setState({
-                error:false
+                error: false
             })
         }
     }
 
     render() {
         const ErrorExist = this.state.error;
-         return (
-            <div className="card-mt-5">
-                <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
-                <form onSubmit={this.createCandidate}>
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">Name</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="name" name="name" ref={this.nameRef} type="text" className="form-control" placeholder="Name" />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">Last Name</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="Lastname" name="Lastname" ref={this.lastNameRef} type="text" className="form-control" placeholder="Last Name" />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">Identification</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="id" name="id" ref={this.idRef} type="text" className="form-control" placeholder="Id" />
-                        </div>
-                    </div>
+        return (
+            <div className="container-fluid">
+                <div className="jumbotron containerJumbotron">
+                    <h1 className="display-4 text-center">CUSTOM GITHUB APP</h1>
+                    <hr></hr>
+                    <h3>aplicación Web que personaliza el uso de Github.</h3>
+                    <p>A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
+                </div>
 
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">Birt Date</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="date" name="date" ref={this.birtDateRef} type="date" className="form-control" />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">Email</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="email" name="email" ref={this.emailRef} type="email" className="form-control" placeholder="email@example.com" />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-4 col-lg-2 col-form-label">User Github</label>
-                        <div className="col-sm-8 col-lg-10">
-                            <input id="userGit" name="UserGit" ref={this.userGitRef} type="text" className="form-control" placeholder="UserGit" />
-                        </div>
-                    </div>
+                <div className="card border-primary text-white bg-dark mb-3" >
+                    <div className="card-body">
+                        <h2 className="card-title text-center mb-5">REGISTRAR CANDIDATO</h2>
+                        <form onSubmit={this.createCandidate}>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">Name</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="name" name="name" ref={this.nameRef} type="text" className="form-control" placeholder="Name" />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">Last Name</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="Lastname" name="Lastname" ref={this.lastNameRef} type="text" className="form-control" placeholder="Last Name" />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">Identification</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="id" name="id" ref={this.idRef} type="text" className="form-control" placeholder="Id" />
+                                </div>
+                            </div>
 
-                    <div className="form-group row justify-content-end">
-                        <div className="col-sm-3">
-                            <button type="submit" className="btn btn-success w-100">Register</button>
-                        </div>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">Birt Date</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="date" name="date" ref={this.birtDateRef} type="date" className="form-control" />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">Email</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="email" name="email" ref={this.emailRef} type="email" className="form-control" placeholder="email@example.com" />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-sm-4 col-lg-2 col-form-label">User Github</label>
+                                <div className="col-sm-8 col-lg-10">
+                                    <input id="userGit" name="UserGit" ref={this.userGitRef} type="text" className="form-control" placeholder="UserGit" />
+                                </div>
+                            </div>
+
+                            <div className="form-group row justify-content-end">
+                                <div className="col-sm-3">
+                                    <button type="submit" className="btn btn-success w-100">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                        {ErrorExist ? <ErrorComponent title='All fields are required' /> : null}
                     </div>
-                </form>
-                {ErrorExist ? <ErrorComponent title='All fields are required'/> : null}
+                </div>
             </div>
-
         )
     }
 }
