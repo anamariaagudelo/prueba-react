@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router from '../../screens/Router'
+import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 
 
 
