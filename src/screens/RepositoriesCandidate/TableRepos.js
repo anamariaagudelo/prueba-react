@@ -33,7 +33,7 @@ class TableRepos extends Component {
                             pagination
                             search 
                             searchPlaceholder='Filtrar'
-                            headerStyle={ { background: '#eeee' } }
+                            headerStyle={ { background: ' #e6e5e5' } }
                         >
                             <TableHeaderColumn dataField='name' dataSort={ true }>NOMBRE</TableHeaderColumn>
                             <TableHeaderColumn dataField='description' dataSort={ true }>DESCRIPCIÓN</TableHeaderColumn>
