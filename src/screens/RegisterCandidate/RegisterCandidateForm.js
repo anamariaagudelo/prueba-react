@@ -62,12 +62,12 @@ class RegisterCandidateForm extends Component {
         const ErrorExist = this.state.error;
         return (
             <div>
-                <div className="jumbotron " >
+                <div className="jumbotron" >
                     <h1 className="display-4 text-center">CUSTOM GITHUB APP</h1>
                     <h3 className="text-center">aplicación Web que personaliza el uso de Github.</h3>
                     <p className="text-center">A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
                     <hr></hr>
-                    <div className="card border-primary text-white bg-dark mb-3" >
+                    <div className="card border-primary text-white bg-dark mb-3 containerCard" >
                         <div className="card-body">
                             <h2 className="card-title text-center mb-5 text-center">REGISTRAR CANDIDATO</h2>
                             <form onSubmit={this.createCandidate}>

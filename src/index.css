@@ -75,8 +75,21 @@
  .containerJumbotron{
     margin-top: 10px;
  }
+
+ .containerCard{
+  max-width: 40rem;
+  margin:auto auto;
+ }
  .customClass {
   padding: 3px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand>img {
+  padding: 7px 14px;
 }
 
  [tabindex="-1"]:focus {
