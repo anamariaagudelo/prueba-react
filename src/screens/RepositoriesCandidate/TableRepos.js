@@ -38,9 +38,9 @@ class TableRepos extends Component {
                         >
                             <TableHeaderColumn dataField='name' dataSort={true}>NOMBRE</TableHeaderColumn>
                             <TableHeaderColumn dataField='description' dataSort={true}>DESCRIPCIÓN</TableHeaderColumn>
-                            <TableHeaderColumn dataField='git_url' dataSort={true}>URL_GIT</TableHeaderColumn>
-                            <TableHeaderColumn dataField='default_branch' dataSort={true}>DEFAULT_BRANCH</TableHeaderColumn>
-                            <TableHeaderColumn dataField='language' dataSort={true}>LENGUJE</TableHeaderColumn>
+                            <TableHeaderColumn dataField='git_url' dataSort={true}>URLGIT</TableHeaderColumn>
+                            <TableHeaderColumn dataField='default_branch' dataSort={true}>BRANCH POR DEFECTO</TableHeaderColumn>
+                            <TableHeaderColumn dataField='language' dataSort={true}>LENGUAJE</TableHeaderColumn>
                         </BootstrapTable>
                     </div>
                 </div>

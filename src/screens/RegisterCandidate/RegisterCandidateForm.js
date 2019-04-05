@@ -63,7 +63,7 @@ class RegisterCandidateForm extends Component {
         return (
             <div>
                 <div className="jumbotron" >
-                    <h1 className="display-4 text-center">CUSTOM GITHUB APP</h1>
+                    <h1 className="display-4 text-center">GIT4N APP</h1>
                     <h3 className="text-center">aplicación Web que personaliza el uso de Github.</h3>
                     <p className="text-center">A través de este sistema se espera poder conocer la información de los repositorios de Github de cualquier candidato al cual se le realice el resgistro.</p>
                     <hr></hr>
