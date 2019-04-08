@@ -20,7 +20,11 @@ class SearchUserGithub extends Component {
 
 
     consultApi = (user) => {
-        if (!user) return null
+        if (!user) {
+            this.setState({
+                error: 'Ocurrió un error al buscar los respositorios  del usuario registrado'
+            })
+        }
 
         //leer la url
         let url = `https://api.github.com/users/${user}/repos`
@@ -37,9 +41,6 @@ class SearchUserGithub extends Component {
             })
             .catch(error => {
                 console.log(error)
-                this.setState({
-                    error: 'Ocurrió un error al buscar los respositorios  del usuario registrado'
-                })
             })
     }
 
