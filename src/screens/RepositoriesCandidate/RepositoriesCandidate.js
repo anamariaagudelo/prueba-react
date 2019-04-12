@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import TableRepos from './TableRepos';
-import CookiesCandidate from '../../components/Cookies/Cookies';
 import Header from '../../components/UI/Header/Header';
+import CookiesCandidate from '../../components/Cookies/Cookies';
 
+//redux
+import {connect} from 'react-redux';
+import {setRepos} from '../../redux/actions/reposActions'
 
 class SearchUserGithub extends Component {
     constructor(props) {
@@ -10,24 +13,22 @@ class SearchUserGithub extends Component {
 
         this.state = {
             error: '',
-            repos: [],
-            candidate: CookiesCandidate.getCookie('myCookie'),
-            user: '',
+            user: CookiesCandidate.getCookie('myCookie'),
         }
-        const user = this.state.candidate
-        this.consultApi(user['userGit'])
+        const userGit = this.state.user
+        this.consultApi(userGit['userGit']);
     }
 
 
-    consultApi = (user) => {
-        if (!user) {
+    consultApi = (userGit) => {
+        if (!userGit) {
             this.setState({
                 error: 'Ocurrió un error al buscar los respositorios  del usuario registrado'
             })
         }
 
         //leer la url
-        let url = `https://api.github.com/users/${user}/repos`
+        let url = `https://api.github.com/users/${userGit}/repos`
 
         //consultar con fetch
         fetch(url)
@@ -35,10 +36,8 @@ class SearchUserGithub extends Component {
                 return res.json();
             })
             .then(data => {
-                this.setState({
-                    repos: data
+                this.props.setRepos(data)
                 })
-            })
             .catch(error => {
                 console.log(error)
             })
@@ -49,19 +48,21 @@ class SearchUserGithub extends Component {
         return (
             <div className="container-fluid">
                 <Header
-                    nombre={this.state.candidate['name']}
-                    lastName={this.state.candidate['lastName']}
-                    id={this.state.candidate['id']}
-                    date={this.state.candidate['birtDate']}
-                    email={this.state.candidate['email']}
-                    userGit={this.state.candidate['userGit']}
+                    nombre={this.state.user['name']}
+                    lastName={this.state.user['lastName']}
+                    id={this.state.user['id']}
+                    date={this.state.user['birtDate']}
+                    email={this.state.user['email']}
+                    userGit={this.state.user['userGit']}
                 />
-                <TableRepos
-                    repos={this.state.repos}
-                />
+                <TableRepos/>
             </div>
         )
     }
 }
 
-export default SearchUserGithub;
+const mapStateToProps= state=>({
+    repos: state.repos.repos
+})
+
+export default connect(mapStateToProps,{setRepos}) (SearchUserGithub);

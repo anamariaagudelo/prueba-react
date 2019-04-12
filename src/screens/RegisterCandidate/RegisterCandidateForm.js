@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import ErrorComponent from '../../components/UI/Error/Error'
 import uuid from 'uuid';
+import CookiesCandidate from '../../components/Cookies/Cookies';
+import { withRouter } from "react-router";
 
-
+//redux
+import {connect} from 'react-redux';
+import {registerCandidate} from '../../redux/actions/registerActions';
 
 
 class RegisterCandidateForm extends Component {
@@ -46,7 +50,10 @@ class RegisterCandidateForm extends Component {
             }
 
             //Se envia el objeto hacia el padre para actualizar el state
-            this.props.createCandidate(newCandidate);
+            CookiesCandidate.setCookie(newCandidate);
+            this.props.registerCandidate(newCandidate);
+            const { history } = this.props;
+            history.push('/search');
 
             //Reiniciar el formulario
             e.currentTarget.reset();
@@ -126,7 +133,11 @@ class RegisterCandidateForm extends Component {
     }
 }
 
+const mapStateToProps = state =>({
+    candidates:state.candidates.candidates
+})
 
+const RegisterCandidateWithRouter = withRouter(RegisterCandidateForm);
 
-export default RegisterCandidateForm;
+export default connect(mapStateToProps, {registerCandidate})(RegisterCandidateWithRouter);
 

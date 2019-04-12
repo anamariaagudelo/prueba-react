@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import * as R from 'ramda';
 import { TableHeaderColumn, BootstrapTable } from 'react-bootstrap-table';
 
-
-
-
+//redux
+import {connect} from 'react-redux';
+import {getRepos} from '../../redux/actions/reposActions'
 
 
 class TableRepos extends Component {
 
+    
 
     render() {
 
@@ -28,8 +29,8 @@ class TableRepos extends Component {
                 <div className="card border-primary text-white bg-dark mb-3 overflow-auto" >
                     <div className="card-body">
                         <BootstrapTable striped bordered hover variant="dark" overflow-auto
-                            data={repos}
-                            keyField="id"
+                            keyField='id'
+                            data= {repos[0]}
                             options={options}
                             pagination
                             search
@@ -49,4 +50,8 @@ class TableRepos extends Component {
     }
 }
 
-export default TableRepos;
+const mapStateToProps= state=>({
+    repos: state.repos.repos
+})
+
+export default connect(mapStateToProps,{getRepos})(TableRepos);
