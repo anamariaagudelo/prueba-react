@@ -2,31 +2,37 @@ import React, { Component } from 'react';
 import TableRepos from './TableRepos';
 import Header from '../../components/UI/Header/Header';
 import CookiesCandidate from '../../components/Cookies/Cookies';
+import ErrorComponent from '../../components/UI/Error/Error';
 
 //redux
-import {connect} from 'react-redux';
-import {setRepos} from '../../redux/actions/reposActions'
+import { connect } from 'react-redux';
+import { setRepos } from '../../redux/actions/reposActions';
+import { mostratError } from '../../redux/actions/errorActions';
 
 class SearchUserGithub extends Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
+        this.getUser()
+    }
 
-        this.state = {
-            error: '',
-            user: CookiesCandidate.getCookie('myCookie'),
-        }
+    componentWillMount() {
+        this.props.mostratError(false);
+    }
+
+    state = {
+        user: CookiesCandidate.getCookie('myCookie'),
+    }
+
+    getUser() {
         const userGit = this.state.user
-        this.consultApi(userGit['userGit']);
+        if (!userGit) {
+            this.props.mostratError(true)
+        } else {
+            this.consultApi(userGit['userGit']);
+        }
     }
 
 
     consultApi = (userGit) => {
-        if (!userGit) {
-            this.setState({
-                error: 'Ocurrió un error al buscar los respositorios  del usuario registrado'
-            })
-        }
-
         //leer la url
         let url = `https://api.github.com/users/${userGit}/repos`
 
@@ -37,32 +43,35 @@ class SearchUserGithub extends Component {
             })
             .then(data => {
                 this.props.setRepos(data)
-                })
+            })
             .catch(error => {
                 console.log(error)
             })
     }
 
     render() {
-
+        const ErrorExist = this.props.error;
         return (
             <div className="container-fluid">
-                <Header
-                    nombre={this.state.user['name']}
-                    lastName={this.state.user['lastName']}
-                    id={this.state.user['id']}
-                    date={this.state.user['birtDate']}
-                    email={this.state.user['email']}
-                    userGit={this.state.user['userGit']}
-                />
-                <TableRepos/>
+                {ErrorExist ? <ErrorComponent title='Ocurrió un error al buscar los respositorios  del usuario registrado'/> :
+                    <Header
+                        nombre={this.state.user['name']}
+                        lastName={this.state.user['lastName']}
+                        id={this.state.user['id']}
+                        date={this.state.user['birtDate']}
+                        email={this.state.user['email']}
+                        userGit={this.state.user['userGit']}
+                    />}
+
+                <TableRepos />
             </div>
         )
     }
 }
 
-const mapStateToProps= state=>({
-    repos: state.repos.repos
+const mapStateToProps = state => ({
+    repos: state.repos.repos,
+    error: state.error.error
 })
 
-export default connect(mapStateToProps,{setRepos}) (SearchUserGithub);
+export default connect(mapStateToProps, { setRepos, mostratError })(SearchUserGithub);
