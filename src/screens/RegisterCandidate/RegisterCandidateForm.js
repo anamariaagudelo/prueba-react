@@ -7,9 +7,14 @@ import { withRouter } from "react-router";
 //redux
 import {connect} from 'react-redux';
 import {registerCandidate} from '../../redux/actions/registerActions';
+import {mostratError} from '../../redux/actions/errorActions';
 
 
 class RegisterCandidateForm extends Component {
+
+    componentWillMount(){
+        this.props.mostratError(false);
+    }
 
     //refs
     nameRef = React.createRef();
@@ -18,10 +23,6 @@ class RegisterCandidateForm extends Component {
     birtDateRef = React.createRef();
     emailRef = React.createRef();
     userGitRef = React.createRef();
-
-    state = {
-        error: false
-    }
 
 
     createCandidate = e => {
@@ -35,9 +36,7 @@ class RegisterCandidateForm extends Component {
             userGit = this.userGitRef.current.value
 
         if (name === '' || lastName === '' || id === '' || birtDate === '' || email === '' || userGit === '') {
-            this.setState({
-                error: true
-            })
+            this.props.mostratError(true);
         } else {
             const newCandidate = {
                 ide: uuid(),
@@ -59,14 +58,12 @@ class RegisterCandidateForm extends Component {
             e.currentTarget.reset();
 
             //Elimminar el Error
-            this.setState({
-                error: false
-            })
+            this.props.mostratError(false)
         }
     }
 
     render() {
-        const ErrorExist = this.state.error;
+        const ErrorExist = this.props.error;
         return (
             <div>
                 <div className="jumbotron" >
@@ -134,10 +131,11 @@ class RegisterCandidateForm extends Component {
 }
 
 const mapStateToProps = state =>({
-    candidates:state.candidates.candidates
+    candidates:state.candidates.candidates,
+    error:state.error.error
 })
 
 const RegisterCandidateWithRouter = withRouter(RegisterCandidateForm);
 
-export default connect(mapStateToProps, {registerCandidate})(RegisterCandidateWithRouter);
+export default connect(mapStateToProps, {registerCandidate,mostratError})(RegisterCandidateWithRouter);
 

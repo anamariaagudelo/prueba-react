@@ -7,11 +7,13 @@ const initialState ={
 }
 
 export default function(state= initialState, action){
-    if(action.type===REGISTER_CANDIDATE){
+    switch(action.type){
+        case REGISTER_CANDIDATE:
         return{
             ...state,
             candidates:[...state.candidates, action.payload] 
         }
+        default:
+        return state;
     }
-    return state;
 }
