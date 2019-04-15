@@ -1,6 +1,6 @@
 import {MOSTRAR_ERROR} from './types';
 
-export const mostratError = (estado) =>{
+export const mostrarError = (estado) =>{
     return{
         type:MOSTRAR_ERROR,
         payload: estado

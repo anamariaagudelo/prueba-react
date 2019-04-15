@@ -8,6 +8,4 @@ export default combineReducers({
     repos: reposReducer,
     candidates: registerReducer,
     error: errorReducer
-
-
 });

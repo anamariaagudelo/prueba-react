@@ -7,15 +7,14 @@ import ErrorComponent from '../../components/UI/Error/Error';
 //redux
 import { connect } from 'react-redux';
 import { setRepos } from '../../redux/actions/reposActions';
-import { mostratError } from '../../redux/actions/errorActions';
+import { mostrarError } from '../../redux/actions/errorActions';
+
 
 class SearchUserGithub extends Component {
-    componentDidMount() {
-        this.getUser()
-    }
-
-    componentWillMount() {
-        this.props.mostratError(false);
+   
+    componentWillMount(){
+        this.props.mostrarError(false);
+        this.getUser();
     }
 
     state = {
@@ -25,7 +24,7 @@ class SearchUserGithub extends Component {
     getUser() {
         const userGit = this.state.user
         if (!userGit) {
-            this.props.mostratError(true)
+            this.props.mostrarError(true)
         } else {
             this.consultApi(userGit['userGit']);
         }
@@ -46,14 +45,15 @@ class SearchUserGithub extends Component {
             })
             .catch(error => {
                 console.log(error)
+                this.props.mostrarError(true)
             })
     }
 
     render() {
-        const ErrorExist = this.props.error;
+         const ErrorExist = this.props.err;
         return (
             <div className="container-fluid">
-                {ErrorExist ? <ErrorComponent title='Ocurrió un error al buscar los respositorios  del usuario registrado'/> :
+                {ErrorExist ? <ErrorComponent title='Ocurrió un error!!! No se encuantra usuario registrado' /> :
                     <Header
                         nombre={this.state.user['name']}
                         lastName={this.state.user['lastName']}
@@ -61,8 +61,8 @@ class SearchUserGithub extends Component {
                         date={this.state.user['birtDate']}
                         email={this.state.user['email']}
                         userGit={this.state.user['userGit']}
-                    />}
-
+                    />
+                }
                 <TableRepos />
             </div>
         )
@@ -71,7 +71,8 @@ class SearchUserGithub extends Component {
 
 const mapStateToProps = state => ({
     repos: state.repos.repos,
-    error: state.error.error
+    err: state.error.error
 })
 
-export default connect(mapStateToProps, { setRepos, mostratError })(SearchUserGithub);
+
+export default connect(mapStateToProps, { setRepos, mostrarError })(SearchUserGithub);

@@ -7,13 +7,13 @@ import { withRouter } from "react-router";
 //redux
 import {connect} from 'react-redux';
 import {registerCandidate} from '../../redux/actions/registerActions';
-import {mostratError} from '../../redux/actions/errorActions';
+import {mostrarError} from '../../redux/actions/errorActions';
 
 
 class RegisterCandidateForm extends Component {
 
     componentWillMount(){
-        this.props.mostratError(false);
+        this.props.mostrarError(false);
     }
 
     //refs
@@ -36,7 +36,7 @@ class RegisterCandidateForm extends Component {
             userGit = this.userGitRef.current.value
 
         if (name === '' || lastName === '' || id === '' || birtDate === '' || email === '' || userGit === '') {
-            this.props.mostratError(true);
+            this.props.mostrarError(true);
         } else {
             const newCandidate = {
                 ide: uuid(),
@@ -58,7 +58,7 @@ class RegisterCandidateForm extends Component {
             e.currentTarget.reset();
 
             //Elimminar el Error
-            this.props.mostratError(false)
+            this.props.mostrarError(false)
         }
     }
 
@@ -137,5 +137,5 @@ const mapStateToProps = state =>({
 
 const RegisterCandidateWithRouter = withRouter(RegisterCandidateForm);
 
-export default connect(mapStateToProps, {registerCandidate,mostratError})(RegisterCandidateWithRouter);
+export default connect(mapStateToProps, {registerCandidate,mostrarError})(RegisterCandidateWithRouter);
 

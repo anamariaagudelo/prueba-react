@@ -4,7 +4,6 @@ import { TableHeaderColumn, BootstrapTable } from 'react-bootstrap-table';
 
 //redux
 import {connect} from 'react-redux';
-import {getRepos} from '../../redux/actions/reposActions'
 
 
 class TableRepos extends Component {
@@ -54,4 +53,4 @@ const mapStateToProps= state=>({
     repos: state.repos.repos
 })
 
-export default connect(mapStateToProps,{getRepos})(TableRepos);
+export default connect(mapStateToProps)(TableRepos);

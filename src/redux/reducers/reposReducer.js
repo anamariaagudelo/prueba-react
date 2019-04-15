@@ -1,4 +1,4 @@
-import { LIST_REPOS, SET_REPOS } from '../actions/types';
+import {SET_REPOS } from '../actions/types';
 
 //state inicial
 
@@ -8,10 +8,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case LIST_REPOS:
-            return {
-                ...state
-            }
         case SET_REPOS:
             return {
                 ...state,
